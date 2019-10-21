@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Smart Analytics | Email - Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description"
+        content="Marketo Dashboard">
+    <meta name="author" content="Ajay Mamgain">
+
+    <link rel="icon" href="{{url_for('static', filename='assets/images/favicon.ico')}}" type="image/x-icon">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/animate-css/vivify.min.css')}}">
+    <!--TABLE CSS-->
+    <link rel="stylesheet"
+        href="{url_for('static', filename='assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{url_for('static', filename='assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{url_for('static', filename='assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{url_for('static', filename='assets/vendor/sweetalert/sweetalert.css')}" />
+
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/site.min.css')}}">
+
+</head>
+
+<body class="theme-cyan font-montserrat">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+        </div>
+    </div>
+
+    
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+
+    <div id="wrapper">
+
+        <nav class="navbar top-navbar">
+            <div class="container-fluid">
+
+                <div class="navbar-left">
+                    <div class="navbar-btn">
+                        <a href="index.html"><img
+                                src="{{url_for('static', filename='assets/images/favicon.ico')}}" alt="Smart Analytics Logo"
+                                class="img-fluid logo"></a>
+                        <button type="button" class="btn-toggle-offcanvas"><i
+                                class="lnr lnr-menu fa fa-bars"></i></button>
+                    </div>                    
+                </div>
+
+                <div class="navbar-right">
+                    <div id="navbar-menu">
+                        <ul class="nav navbar-nav">
+                            {% if user %}
+                            <li><a href="{{url_for('login')}}" class="icon-menu"><i class="icon-power"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="myBar"></div>
+            </div>
+        </nav>
+
+        <div id="left-sidebar" class="sidebar">
+            <div class="navbar-brand">
+                <a href="index.html"><img src="{{url_for('static', filename='assets/images/favicon.ico')}}"
+                        alt="Smart Analytics Logo"
+                        class="img-fluid logo"><span>Smart Analytics</span></a>
+                <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i
+                        class="lnr lnr-menu icon-close"></i></button>
+            </div>
+            <div class="sidebar-scroll">
+                <div class="user-account">
+                    <div class="user_div">
+                        <img src="{{url_for('static', filename='assets/images/portfolio.jpg')}}" class="user-photo"
+                            alt=ajay>
+                    </div>
+                    <div class="dropdown">
+                        <span>Welcome,</span>
+                        <a href="javascript:void(0);" class="dropdown-toggle user-name"
+                            data-toggle="dropdown"><strong>{{user_result.FirstName}}
+                                {{user_result.LastName}}</strong></a>
+                        <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
+                            <li><a href="page-profile.html"><i class="icon-user"></i>My Profile</a></li>
+                            <li class="divider"></li>
+                            {% if user %}
+                            <li><a href="{{url_for('login')}}"><i class="icon-power"></i>Logout</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <nav id="left-sidebar-nav" class="sidebar-nav">
+                    <ul id="main-menu" class="metismenu">
+                        <li><a href="#myPage" ><i class="icon-home"></i><span>Home</span></a></li>
+                        <li><a href="#myPage"><i class="icon-speedometer"></i><span>Email Dashboard</span></a></li>
+                        <li><a href="#myPage"><i class="icon-diamond"></i><span>lead Dashboard</span></a></li>
+                        <li><a href="#myPagel"><i class="icon-rocket"></i><span>Web Analytics</span></a></li>
+                        <li><a href="{{url_for('index3')}}"><i class="icon-badge"></i><span>Campaign Dashboard</span></a>
+                        </li>
+                        <li><a href="#myPage"><i class="icon-cursor"></i><span>Event Analytics</span></a>
+                        </li>                       
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    <div id="main-content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <div class="row clearfix">
+                    <div class="col-md-6 col-sm-12">
+                        <h2>Email Dashboard</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Smart Analytics</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Email Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="body">
+                            <div class="w_summary">
+                                <div class="s_detail">
+                                    <h2 class="font700 mb-0">{{totals.sent}}</h2>
+                                    <span>{{percent.avr_sent}}% <i class="fa fa-level-up text-success"></i> Total
+                                        Sent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="body">
+                            <div class="w_summary">
+                                <div class="s_detail">
+                                    <h2 class="font700 mb-0">{{totals.delivered}}</h2>
+                                    <span>{{percent.avr_del}}% <i class="fa fa-level-up text-success"></i> Total
+                                        Delivered</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="body">
+                            <div class="w_summary">
+                                <div class="s_detail">
+                                    <h2 class="font700 mb-0">{{totals.Opened}}</h2>
+                                    <span>{{percent.avr_open}}% <i class="fa fa-level-up text-success"></i> Total
+                                        Opened</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="body">
+                            <div class="w_summary">
+                                <div class="s_detail">
+                                    <h2 class="font700 mb-0">{{totals.clicked_Email}}</h2>
+                                    <span>{{percent.avr_click}}% <i class="fa fa-level-up text-success"></i> Total
+                                        CLicked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0">Audience Metrics</h6>
+                                </div>
+                                <ul class="nav nav-tabs2">
+                                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                            href="#today">Today</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-week">Week</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-month">Month</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                    <small>Audience It is a long established fact that a reader will be
+                                        distracted</small>
+                                    <div class="d-flex justify-content-start mt-3">
+                                        <div class="mr-5">
+                                            <label class="mb-0">Users</label>
+                                            <h4>9,231</h4>
+                                        </div>
+                                        <div>
+                                            <label class="mb-0">Sessions</label>
+                                            <h4>10,850</h4>
+                                        </div>
+                                    </div>
+                                    <div id="chart-donut" style="height: 250px"></div>
+                                </div>
+                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                    <div id="flotChart" class="flot-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--table--> 
+ <div class="row clearfix">
+     <div class="col-lg-12">
+         <div class="card">
+             <div class="header">
+                 <h2>Basic Table <small>Basic example without any additional modification classes</small></h2>
+                 <ul class="header-dropdown dropdown">
+                     <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+                     <li class="dropdown">
+                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                             aria-haspopup="true" aria-expanded="false"></a>
+                         <ul class="dropdown-menu">
+                             <li><a href="javascript:void(0);">Action</a></li>
+                             <li><a href="javascript:void(0);">Another Action</a></li>
+                             <li><a href="javascript:void(0);">Something else</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+             </div>
+             <div class="body">
+                 <div class="table-responsive">
+                     <table class="table table-hover js-basic-example dataTable table-custom spacing5">
+                         <thead>
+                             <tr>
+                                 <th>Campaign Name</th>
+                                 <th>Sent Date</th>
+                                 <th>Sent</th>
+                                 <th>Delivered</th>
+                                 <th>Opened</th>
+                                 <th>Clicked Email</th>
+                             </tr>
+                         </thead>
+                         <tfoot>
+                             <tr>
+                                 <th>Campaign Name</th>
+                                 <th>Sent Date</th>
+                                 <th>Sent</th>
+                                 <th>Delivered</th>
+                                 <th>Opened</th>
+                                 <th>Clicked Email</th>
+                             </tr>
+                         </tfoot>
+                         <tbody>
+                             {% for x in log_table %}
+                             <tr>
+                                 <td>{{x.Email_Name}}</td>
+                                 <td>{{x.First_Activity}}</td>
+                                 <td>{{x.sent}}</td>
+                                 <td>{{x.delivered}}</td>
+                                 <td>{{x.Opened}}</td>
+                                 <td>{{x.clicked_Email}}</td>
+                             </tr>
+                             {% endfor %}
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+<!-- Javascript -->
+    <script src="{{url_for('static', filename='assets/bundles/libscripts.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bundles/vendorscripts.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bundles/mainscripts.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bundles/flotscripts.bundle.js')}}"></script><!-- flot charts Plugin Js -->
+    <script src="{{url_for('static', filename='assets/bundles/c3.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bundles/knob.bundle.js')}}"></script><!-- Jquery Knob-->
+    <script src="{{url_for('static', filename='assets/js/index11.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bundles/datatablescripts.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/vendor/jquery-datatable/buttons/buttons.html5.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/vendor/jquery-datatable/buttons/buttons.print.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/pages/tables/jquery-datatable.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/index4.js')}}"></script>
+</body>
+
+</html>
