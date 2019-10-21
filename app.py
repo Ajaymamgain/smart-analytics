@@ -93,7 +93,7 @@ def register():
     return render_template('html/page-register.html', user=user)
 
 
-@app.route('/login', methods=["Get","POST"])
+@app.route('/', methods=["Get","POST"])
 def login():
     user = get_current_user()
 
