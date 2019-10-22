@@ -88,7 +88,7 @@ def register():
 
         session['user'] = request.form['name']
 
-        return redirect(url_for('index'))
+        return redirect(url_for('index2'))
 
     return render_template('html/page-register.html', user=user)
 
